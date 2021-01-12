@@ -7,7 +7,9 @@ import {getCardsByColumnId} from "../../selectors/card";
 import {Card, DraftCard} from "../../types/card";
 import {useAction} from "../../../../context/hooks/use-action";
 import {StateAction} from "../../../../context/types/state";
-
+import { ManageCardModal } from "../card/ManageCardModal";
+import { DeleteCardModal } from "../card/DeleteCardModal";
+import { CreateCardButton } from "../card/CreateCardButton";
 
 interface Props {
     id: number,
@@ -27,12 +29,10 @@ export const Column = ({ id, name, color, onDelete, onEdit }: Props) => {
     const editCard = useAction(StateAction.EDIT_CARD)
 
     const handleCreateCard = (data: DraftCard) => {
-        console.log('data', data)
         setModalVisibility(false)
         createCard(data)
     }
     const handleEditCard = (data: DraftCard) => {
-        console.log('data', data)
         editCard(editingCardId, data)
         setEditingCardId(null)
         setModalVisibility(false)
@@ -63,6 +63,23 @@ export const Column = ({ id, name, color, onDelete, onEdit }: Props) => {
                     onEdit={() => handleShowEditModal(card.id)}
                 />
             ))}
+            <CreateCardButton onCreate={() => setModalVisibility(true)} />
+            {isModalVisible && (
+                <ManageCardModal
+                    onClose={() => setModalVisibility(false)}
+                    onCreate={handleCreateCard}
+                    onEdit={handleEditCard}
+                    id={editingCardId}
+                    parentColumnId={id}
+                />
+            )}
+            {Boolean(deletingCardId) && (
+                <DeleteCardModal
+                    onClose={() => setDeletingCardId(null)}
+                    cardId={deletingCardId}
+                    onDelete={handleDeleteCard}
+                />
+            )}
         </div>
     )
 }
