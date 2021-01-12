@@ -1,11 +1,11 @@
-import React from 'react';
-import {Board} from "./scenes/board-page/components/board/Board"
-import { AppState } from "./context/AppState";
+import React from 'react'
+import { Board } from './scenes/board-page/components/board/Board'
+import { AppState } from './context/AppState'
 
 const App = () => (
-    <AppState>
-        <Board />
-    </AppState>
+  <AppState>
+    <Board />
+  </AppState>
 )
 
-export default App;
+export default App
