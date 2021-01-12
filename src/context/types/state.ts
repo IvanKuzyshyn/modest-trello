@@ -22,3 +22,5 @@ export interface IReducerState {
 export interface IAppState extends IReducerState {
   dispatch: Dispatch<any>
 }
+
+export type StateAccessor = <T>(state: IReducerState) => T
