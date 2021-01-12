@@ -2,7 +2,7 @@ import React from 'react'
 import './Page.css'
 
 interface Proos {
-    children: React.Component
+    children: React.ReactNode
 }
 
 export const Page = ({ children }: Proos) => (
