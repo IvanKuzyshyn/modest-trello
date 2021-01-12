@@ -3,7 +3,6 @@ import React from 'react'
 import { useSelector } from '../../../../context/hooks/use-selector'
 import { getColumnById } from '../../selectors/column'
 import { Modal } from '../../../shared/components/modal/Modal'
-import { Column } from '../../types/column'
 
 interface Props {
   columnId: number | null
@@ -12,9 +11,7 @@ interface Props {
 }
 
 export const DeleteColumnModal = ({ columnId, onClose, onDelete }: Props) => {
-  const column = useSelector<Column | undefined>((state) =>
-    getColumnById(state, columnId)
-  )
+  const column = useSelector((state) => getColumnById(state, columnId))
 
   if (!column) {
     return null

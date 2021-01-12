@@ -6,7 +6,7 @@ import { useSelector } from '../../../../context/hooks/use-selector'
 import { getAllColumns } from '../../selectors/column'
 import { useAction } from '../../../../context/hooks/use-action'
 import { StateAction } from '../../../../context/types/state'
-import { Column, DraftColumn } from '../../types/column'
+import { DraftColumn } from '../../types/column'
 import { Column as ColumnComponent } from '../column/Column'
 import { ManageColumnModal } from '../column/ManageColumnModal'
 import { DeleteColumnModal } from '../column/DeleteColumnModal'
@@ -16,7 +16,7 @@ export const Board = () => {
   const [isModalVisible, setModalVisibility] = useState<boolean>(false)
   const [deletingColumnId, setDeletingColumnId] = useState<number | null>(null)
   const [editingColumnId, setEditingColumnId] = useState<number | null>(null)
-  const columns = useSelector<Column[]>(getAllColumns)
+  const columns = useSelector(getAllColumns)
   const createColumn = useAction(StateAction.CREATE_COLUMN)
   const readAllColumns = useAction(StateAction.READ_ALL_COLUMNS)
   const readAllCards = useAction(StateAction.READ_ALL_CARDS)

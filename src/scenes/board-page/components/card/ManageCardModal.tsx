@@ -4,7 +4,7 @@ import { ColumnSelector } from '../column/ColumnSelector'
 import { Modal } from '../../../shared/components/modal/Modal'
 import { useSelector } from '../../../../context/hooks/use-selector'
 import { getCardById } from '../../selectors/card'
-import { Card, DraftCard } from '../../types/card'
+import { DraftCard } from '../../types/card'
 
 interface Props {
   onCreate: (data: DraftCard) => void
@@ -23,7 +23,7 @@ export const ManageCardModal = ({
 }: Props) => {
   const [name, setName] = useState('')
   const [column, setColumn] = useState(parentColumnId)
-  const card = useSelector<Card | undefined>((state) => getCardById(state, id))
+  const card = useSelector((state) => getCardById(state, id))
 
   useEffect(() => {
     if (!column && parentColumnId !== column) {

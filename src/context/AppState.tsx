@@ -9,6 +9,10 @@ interface Props {
 const noopState: IAppState = {
   cards: [],
   columns: [],
+  columnManager: {
+    id: null,
+    isShown: false,
+  },
   dispatch: () => {},
 }
 

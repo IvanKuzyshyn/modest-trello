@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import { useSelector } from '../../../../context/hooks/use-selector'
-import { Column, DraftColumn } from '../../types/column'
+import { DraftColumn } from '../../types/column'
 import { getColumnById } from '../../selectors/column'
 import { Modal } from '../../../shared/components/modal/Modal'
 
@@ -15,9 +15,7 @@ interface Props {
 export const ManageColumnModal = ({ onCreate, onEdit, onClose, id }: Props) => {
   const [label, setLabel] = useState<string>('')
   const [color, setColor] = useState<string>('#000000')
-  const column = useSelector<Column | undefined>((state) =>
-    getColumnById(state, id)
-  )
+  const column = useSelector((state) => getColumnById(state, id))
   useEffect(() => {
     if (!column) {
       return

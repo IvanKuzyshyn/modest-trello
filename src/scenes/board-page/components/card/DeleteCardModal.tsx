@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { Modal } from '../../../shared/components/modal/Modal'
-import { Card } from '../../types/card'
 import { useSelector } from '../../../../context/hooks/use-selector'
 import { getCardById } from '../../selectors/card'
 
@@ -12,9 +11,7 @@ interface Props {
 }
 
 export const DeleteCardModal = ({ cardId, onClose, onDelete }: Props) => {
-  const card = useSelector<Card | undefined>((state) =>
-    getCardById(state, cardId)
-  )
+  const card = useSelector((state) => getCardById(state, cardId))
 
   if (!card) {
     return null

@@ -2,7 +2,6 @@ import React, { useMemo } from 'react'
 
 import { useSelector } from '../../../../context/hooks/use-selector'
 import { getAllColumns } from '../../selectors/column'
-import { Column } from '../../types/column'
 
 interface Props {
   value: string | number
@@ -10,7 +9,7 @@ interface Props {
 }
 
 export const ColumnSelector = ({ value, onChange, ...props }: Props) => {
-  const columns = useSelector<Column[]>(getAllColumns)
+  const columns = useSelector(getAllColumns)
   const options = useMemo(
     () => columns.map((column) => ({ id: column.id, label: column.label })),
     [columns]

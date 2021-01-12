@@ -4,7 +4,7 @@ import './Column.css'
 import { Card as CardComponent } from '../card/Card'
 import { useSelector } from '../../../../context/hooks/use-selector'
 import { getCardsByColumnId } from '../../selectors/card'
-import { Card, DraftCard } from '../../types/card'
+import { DraftCard } from '../../types/card'
 import { useAction } from '../../../../context/hooks/use-action'
 import { StateAction } from '../../../../context/types/state'
 import { ManageCardModal } from '../card/ManageCardModal'
@@ -23,7 +23,7 @@ export const Column = ({ id, name, color, onDelete, onEdit }: Props) => {
   const [isModalVisible, setModalVisibility] = useState<boolean>(false)
   const [deletingCardId, setDeletingCardId] = useState<number | null>(null)
   const [editingCardId, setEditingCardId] = useState<number | null>(null)
-  const cards = useSelector<Card[]>((state) => getCardsByColumnId(state, id))
+  const cards = useSelector((state) => getCardsByColumnId(state, id))
   const createCard = useAction(StateAction.CREATE_CARD)
   const deleteCard = useAction(StateAction.DELETE_CARD)
   const editCard = useAction(StateAction.EDIT_CARD)
