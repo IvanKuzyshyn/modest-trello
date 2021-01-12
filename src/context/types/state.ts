@@ -12,11 +12,16 @@ export enum StateAction {
   DELETE_CARD,
   EDIT_CARD,
   READ_ALL_CARDS,
+  SET_COLUMN_MANAGER,
 }
 
 export interface IReducerState {
   cards: Card[]
   columns: Column[]
+  columnManager: {
+    id: number | null
+    isShown: boolean
+  }
 }
 
 export interface IAppState extends IReducerState {

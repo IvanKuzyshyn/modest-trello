@@ -5,3 +5,8 @@ export type Column = {
 }
 
 export type DraftColumn = Omit<Column, 'id'>
+
+export type ColumnManagerSetup = {
+  id: number | null,
+  isShown: boolean
+}

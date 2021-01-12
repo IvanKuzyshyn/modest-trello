@@ -1,7 +1,6 @@
-import { append, update, findIndex, propEq } from 'ramda'
-import { IReducerState } from '../types/state'
-import { Action } from '../types/action'
-import { StateAction } from '../types/state'
+import {append, findIndex, propEq, update} from 'ramda'
+import {IReducerState, StateAction} from '../types/state'
+import {Action} from '../types/action'
 
 export const stateReducer = (state: IReducerState, action: Action) => {
   switch (action.type) {
@@ -45,6 +44,11 @@ export const stateReducer = (state: IReducerState, action: Action) => {
           action.payload,
           state.cards
         ),
+      }
+    case StateAction.SET_COLUMN_MANAGER:
+      return {
+        ...state,
+        columnManager: action.payload,
       }
     default:
       return state
