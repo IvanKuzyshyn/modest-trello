@@ -8,6 +8,9 @@ import {useAction} from "../../../../context/hooks/use-action";
 import {StateAction} from "../../../../context/types/state";
 import {Column, DraftColumn} from "../../types/column";
 import { Column as ColumnComponent } from "../column/Column";
+import { ManageColumnModal } from "../column/ManageColumnModal";
+import { DeleteColumnModal } from "../column/DeleteColumnModal";
+import { DefaultColumn } from "../column/DefaultColumn";
 
 export const Board = () => {
     const [isModalVisible, setModalVisibility] = useState<boolean>(false)
@@ -58,7 +61,23 @@ export const Board = () => {
                         onEdit={() => handleShowEditModal(column.id)}
                     />
                 ))}
+                <DefaultColumn onCreateColumn={() => setModalVisibility(true)} />
             </section>
+            {isModalVisible && (
+                <ManageColumnModal
+                    onClose={() => setModalVisibility(false)}
+                    onCreate={handleCreateColumn}
+                    onEdit={handleEditColumn}
+                    id={editingColumnId}
+                />
+            )}
+            {Boolean(deletingColumnId) && (
+                <DeleteColumnModal
+                    columnId={deletingColumnId}
+                    onClose={() => setDeletingColumnId(null)}
+                    onDelete={handleDeleteColumn}
+                />
+            )}
         </Page>
     )
 }
