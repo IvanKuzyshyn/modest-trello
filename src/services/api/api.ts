@@ -4,11 +4,12 @@ import { Entity } from './api.types'
 const getUniqueID = () => new Date().getTime()
 
 const readFromStore = (name: Entity) => {
+  console.log('ANME', name)
   const key = name.toString()
   const rawData = localStorage.getItem(key)
 
   try {
-    const data = JSON.parse(rawData || '')
+    const data = JSON.parse(String(rawData))
 
     if (!Array.isArray(data)) {
       return []
