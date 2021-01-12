@@ -1,7 +1,10 @@
 import { Dispatch } from 'react'
 
-import {Card, CardManagerSetup} from '../../scenes/board-page/types/card'
-import {Column, ColumnManagerSetup} from '../../scenes/board-page/types/column'
+import { Card, CardManagerSetup } from '../../scenes/board-page/types/card'
+import {
+  Column,
+  ColumnManagerSetup,
+} from '../../scenes/board-page/types/column'
 
 export enum StateAction {
   CREATE_COLUMN,
@@ -19,8 +22,8 @@ export enum StateAction {
 export interface IReducerState {
   cards: Card[]
   columns: Column[]
-  columnManager: ColumnManagerSetup,
-  cardManager: CardManagerSetup,
+  columnManager: ColumnManagerSetup
+  cardManager: CardManagerSetup
 }
 
 export interface IAppState extends IReducerState {

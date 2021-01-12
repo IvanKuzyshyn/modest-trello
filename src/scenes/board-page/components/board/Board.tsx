@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
 
 import './Board.css'
-import {Page} from '../../../shared/components/page/Page'
-import {useSelector} from '../../../../context/hooks/use-selector'
-import {getAllColumns} from '../../selectors/column'
-import {useAction} from '../../../../context/hooks/use-action'
-import {StateAction} from '../../../../context/types/state'
-import {Column as ColumnComponent} from '../column/Column'
-import {DefaultColumn} from '../column/DefaultColumn'
+import { Page } from '../../../shared/components/page/Page'
+import { useSelector } from '../../../../context/hooks/use-selector'
+import { getAllColumns } from '../../selectors/column'
+import { useAction } from '../../../../context/hooks/use-action'
+import { StateAction } from '../../../../context/types/state'
+import { Column as ColumnComponent } from '../column/Column'
+import { DefaultColumn } from '../column/DefaultColumn'
 
 export const Board = () => {
   const columns = useSelector(getAllColumns)
@@ -34,7 +34,9 @@ export const Board = () => {
             color={column.color}
           />
         ))}
-        <DefaultColumn onCreateColumn={() => setColumnManager({ id: null, isShown: true })} />
+        <DefaultColumn
+          onCreateColumn={() => setColumnManager({ id: null, isShown: true })}
+        />
       </section>
     </Page>
   )

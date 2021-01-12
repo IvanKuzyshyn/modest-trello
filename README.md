@@ -1,4 +1,10 @@
-# Getting Started with Create React App
+# Modest Trello
+
+### Steps to run
+
+- run `git clone <repo>`
+- run `cd <repo> && npm i`
+- run `npm start`
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

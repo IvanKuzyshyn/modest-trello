@@ -9,15 +9,15 @@ export const getCardById: StateAccessor<Card | undefined> = (
   state,
   id?: number
 ) => {
-    if (!id) {
-        return undefined
-    }
+  if (!id) {
+    return undefined
+  }
 
-    return state.cards.find((card) => card.id === id)
+  return state.cards.find((card) => card.id === id)
 }
 export const isCardManagerShown: StateAccessor<boolean> = (state) =>
-    state.cardManager.isShown
+  state.cardManager.isShown
 export const getManagingCardId: StateAccessor<number | null> = (state) =>
-    state.cardManager.id
+  state.cardManager.id
 export const getManagingCardColumnId: StateAccessor<number | null> = (state) =>
-    state.cardManager.columnId
+  state.cardManager.columnId

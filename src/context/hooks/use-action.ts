@@ -4,7 +4,11 @@ import { AppContext } from '../AppState'
 import { StateAction } from '../types/state'
 import { create, readAll, remove, update } from '../../services/api/api'
 import { Entity } from '../../services/api/api.types'
-import {Column, ColumnManagerSetup, DraftColumn} from '../../scenes/board-page/types/column'
+import {
+  Column,
+  ColumnManagerSetup,
+  DraftColumn,
+} from '../../scenes/board-page/types/column'
 import {
   CreateCardAction,
   CreateColumnAction,
@@ -13,9 +17,15 @@ import {
   EditCardAction,
   EditColumnAction,
   ReadAllCardsAction,
-  ReadAllColumnsAction, SetCardManagerAction, SetColumnManagerAction,
+  ReadAllColumnsAction,
+  SetCardManagerAction,
+  SetColumnManagerAction,
 } from '../types/action'
-import {Card, CardManagerSetup, DraftCard} from '../../scenes/board-page/types/card'
+import {
+  Card,
+  CardManagerSetup,
+  DraftCard,
+} from '../../scenes/board-page/types/card'
 
 const HANDLERS: Record<StateAction, Function> = {
   [StateAction.READ_ALL_COLUMNS]: (
@@ -100,18 +110,22 @@ const HANDLERS: Record<StateAction, Function> = {
       payload: items,
     })
   },
-  [StateAction.SET_COLUMN_MANAGER]: (dispatch: Dispatch<SetColumnManagerAction>) => (data: ColumnManagerSetup) => {
+  [StateAction.SET_COLUMN_MANAGER]: (
+    dispatch: Dispatch<SetColumnManagerAction>
+  ) => (data: ColumnManagerSetup) => {
     dispatch({
       type: StateAction.SET_COLUMN_MANAGER,
       payload: data,
     })
   },
-  [StateAction.SET_CARD_MANAGER]: (dispatch: Dispatch<SetCardManagerAction>) => (data: CardManagerSetup) => {
+  [StateAction.SET_CARD_MANAGER]: (
+    dispatch: Dispatch<SetCardManagerAction>
+  ) => (data: CardManagerSetup) => {
     dispatch({
       type: StateAction.SET_CARD_MANAGER,
       payload: data,
     })
-  }
+  },
 }
 
 export const useAction = (action: StateAction) => {

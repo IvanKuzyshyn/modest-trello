@@ -1,6 +1,6 @@
-import {append, findIndex, propEq, update} from 'ramda'
-import {IReducerState, StateAction} from '../types/state'
-import {Action} from '../types/action'
+import { append, findIndex, propEq, update } from 'ramda'
+import { IReducerState, StateAction } from '../types/state'
+import { Action } from '../types/action'
 
 export const stateReducer = (state: IReducerState, action: Action) => {
   console.log('ACTION', action)
