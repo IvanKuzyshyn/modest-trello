@@ -1,0 +1,27 @@
+.card {
+    background-color: rgba(255, 255, 255, 0.8);
+    margin: 8px 0;
+    transition: background 85ms ease-in;
+}
+
+.card h4 {
+    color: #333333;
+    margin-bottom: 4px;
+    white-space: break-spaces;
+}
+
+.card.card-button {
+    color: #333333;
+    padding: 4px;
+    text-align: center;
+}
+
+.card.card-button:hover {
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.card.card-controls {
+    display: flex;
+    justify-content: space-between;
+}
