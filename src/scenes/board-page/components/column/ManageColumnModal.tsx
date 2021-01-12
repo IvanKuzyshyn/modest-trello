@@ -6,11 +6,14 @@ import {StateAction} from "../../../../context/types/state";
 import {DraftColumn} from "../../types/column";
 import {Modal} from "../../../shared/components/modal/Modal";
 
+const DEFAULT_LABEL = ''
+const DEFAULT_COLOR = '#000000'
+
 export const ManageColumnModal = () => {
   const isShown = useSelector(isColumnManagerShown)
   const columnId = useSelector(getManagingColumnId)
-    const [label, setLabel] = useState<string>('')
-    const [color, setColor] = useState<string>('#000000')
+    const [label, setLabel] = useState<string>(DEFAULT_LABEL)
+    const [color, setColor] = useState<string>(DEFAULT_COLOR)
     const column = useSelector(state => getColumnById(state, columnId))
     const createColumn = useAction(StateAction.CREATE_COLUMN)
     const editColumn = useAction(StateAction.EDIT_COLUMN)
@@ -32,6 +35,8 @@ export const ManageColumnModal = () => {
     const isNew = !column
     const handleClose = () => {
         setColumnManager({ id: null, isShown: false })
+        setLabel(DEFAULT_LABEL)
+        setColor(DEFAULT_COLOR)
     }
     const handleChangeLabel = (event: React.ChangeEvent<HTMLInputElement>) =>
         setLabel(event.target.value)
@@ -46,7 +51,7 @@ export const ManageColumnModal = () => {
         }
 
         const data: DraftColumn = { label, color }
-        column ? editColumn(data) : createColumn(data)
+        column ? editColumn(column.id, data) : createColumn(data)
         handleClose()
     }
 
