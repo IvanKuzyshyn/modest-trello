@@ -1,9 +1,8 @@
 import React from 'react';
+import {Board} from "./scenes/board-page/components/board/Board"
 
 const App = () => (
-    <div className="App">
-      hello
-    </div>
+    <Board />
 )
 
 export default App;

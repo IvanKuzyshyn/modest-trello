@@ -3,7 +3,7 @@ import React from 'react'
 import './Board.css'
 import { Page } from "../../../shared/components/page/Page";
 
-const Board = () => {
+export const Board = () => {
     return (
         <Page>
             <section>
@@ -15,5 +15,3 @@ const Board = () => {
         </Page>
     )
 }
-
-export default Board
