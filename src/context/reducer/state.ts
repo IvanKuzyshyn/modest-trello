@@ -3,6 +3,7 @@ import {IReducerState, StateAction} from '../types/state'
 import {Action} from '../types/action'
 
 export const stateReducer = (state: IReducerState, action: Action) => {
+  console.log('ACTION', action)
   switch (action.type) {
     case StateAction.READ_ALL_COLUMNS:
     case StateAction.DELETE_COLUMN:
@@ -49,6 +50,11 @@ export const stateReducer = (state: IReducerState, action: Action) => {
       return {
         ...state,
         columnManager: action.payload,
+      }
+    case StateAction.SET_CARD_MANAGER:
+      return {
+        ...state,
+        cardManager: action.payload,
       }
     default:
       return state

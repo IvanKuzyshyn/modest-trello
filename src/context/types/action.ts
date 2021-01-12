@@ -1,5 +1,5 @@
 import { StateAction } from './state'
-import { Card } from '../../scenes/board-page/types/card'
+import {Card, CardManagerSetup} from '../../scenes/board-page/types/card'
 import {Column, ColumnManagerSetup} from '../../scenes/board-page/types/column'
 
 export type ReadAllCardsAction = {
@@ -47,6 +47,11 @@ export type SetColumnManagerAction = {
   payload: ColumnManagerSetup,
 }
 
+export type SetCardManagerAction = {
+  type: StateAction.SET_CARD_MANAGER,
+  payload: CardManagerSetup,
+}
+
 export type Action =
   | ReadAllCardsAction
   | ReadAllColumnsAction
@@ -57,3 +62,4 @@ export type Action =
   | DeleteCardAction
   | DeleteColumnAction
   | SetColumnManagerAction
+  | SetCardManagerAction

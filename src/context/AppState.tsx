@@ -13,6 +13,11 @@ const noopState: IAppState = {
     id: null,
     isShown: false,
   },
+  cardManager: {
+    id: null,
+    columnId: null,
+    isShown: false,
+  },
   dispatch: () => {},
 }
 
@@ -21,7 +26,6 @@ export const AppContext = createContext<IAppState>(noopState)
 export const AppState = ({ children }: Props) => {
   const [state, dispatch] = useReducer(stateReducer, noopState)
 
-  console.log('sTATE', state)
   return (
     <AppContext.Provider value={{ ...state, dispatch }}>
       {children}

@@ -1,7 +1,7 @@
 import { Dispatch } from 'react'
 
-import { Card } from '../../scenes/board-page/types/card'
-import { Column } from '../../scenes/board-page/types/column'
+import {Card, CardManagerSetup} from '../../scenes/board-page/types/card'
+import {Column, ColumnManagerSetup} from '../../scenes/board-page/types/column'
 
 export enum StateAction {
   CREATE_COLUMN,
@@ -13,15 +13,14 @@ export enum StateAction {
   EDIT_CARD,
   READ_ALL_CARDS,
   SET_COLUMN_MANAGER,
+  SET_CARD_MANAGER,
 }
 
 export interface IReducerState {
   cards: Card[]
   columns: Column[]
-  columnManager: {
-    id: number | null
-    isShown: boolean
-  }
+  columnManager: ColumnManagerSetup,
+  cardManager: CardManagerSetup,
 }
 
 export interface IAppState extends IReducerState {

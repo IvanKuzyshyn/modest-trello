@@ -5,3 +5,9 @@ export type Card = {
 }
 
 export type DraftCard = Omit<Card, 'id'>
+
+export type CardManagerSetup = {
+  id: number | null,
+  isShown: boolean,
+  columnId: number | null,
+}
