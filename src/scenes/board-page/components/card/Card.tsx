@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
 import './Card.css'
 
+import { DeleteConfirmation } from "./DeleteConfirmation";
+
 interface Props {
+    id: number,
   name: string
-  onDelete: () => void
   onEdit: () => void
 }
 
-export const Card = ({ name, onDelete, onEdit }: Props) => {
+export const Card = ({ id, name, onEdit }: Props) => {
   const [isCollapsed, setCollapsed] = useState<boolean>(false)
+    const [isShownConfirmation, showConfirmation] = useState<boolean>(false)
 
   return (
     <div className="card">
@@ -22,12 +25,17 @@ export const Card = ({ name, onDelete, onEdit }: Props) => {
             <button data-testid="card-edit" onClick={onEdit}>
               &#9998;
             </button>
-            <button data-testid="card-delete" onClick={onDelete}>
+            <button data-testid="card-delete" onClick={() => showConfirmation(true)}>
               &#10006;
             </button>
           </div>
         )}
       </div>
+        <DeleteConfirmation
+            id={id}
+            isVisible={isShownConfirmation}
+            onClose={() => showConfirmation(false)}
+        />
     </div>
   )
 }

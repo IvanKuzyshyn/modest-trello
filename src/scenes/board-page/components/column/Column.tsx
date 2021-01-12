@@ -6,7 +6,6 @@ import {useSelector} from '../../../../context/hooks/use-selector'
 import {getCardsByColumnId} from '../../selectors/card'
 import {useAction} from '../../../../context/hooks/use-action'
 import {StateAction} from '../../../../context/types/state'
-import {DeleteCardModal} from '../card/DeleteCardModal'
 import {CreateCardButton} from '../card/CreateCardButton'
 import { DeleteConfirmation } from "./DeleteConfirmation";
 
@@ -18,15 +17,9 @@ interface Props {
 
 export const Column = ({ id, name, color }: Props) => {
   const [isShownConfirmation, showConfirmation] = useState<boolean>(false)
-  const [deletingCardId, setDeletingCardId] = useState<number | null>(null)
   const cards = useSelector((state) => getCardsByColumnId(state, id))
-  const deleteCard = useAction(StateAction.DELETE_CARD)
   const setCardManager = useAction(StateAction.SET_CARD_MANAGER)
   const setColumnManager = useAction(StateAction.SET_COLUMN_MANAGER)
-  const handleDeleteCard = () => {
-    deleteCard(deletingCardId)
-    setDeletingCardId(null)
-  }
 
   return (
     <div className="column" style={{ borderTopColor: color }}>
@@ -40,8 +33,8 @@ export const Column = ({ id, name, color }: Props) => {
       {cards.map((card) => (
         <CardComponent
           key={card.id}
+          id={card.id}
           name={card.name}
-          onDelete={() => setDeletingCardId(card.id)}
           onEdit={() => setCardManager({ id: card.id, columnId: id, isShown: true })}
         />
       ))}
@@ -51,13 +44,6 @@ export const Column = ({ id, name, color }: Props) => {
           onClose={() => showConfirmation(false)}
           isVisible={isShownConfirmation}
       />
-      {Boolean(deletingCardId) && (
-        <DeleteCardModal
-          onClose={() => setDeletingCardId(null)}
-          cardId={deletingCardId}
-          onDelete={handleDeleteCard}
-        />
-      )}
     </div>
   )
 }
