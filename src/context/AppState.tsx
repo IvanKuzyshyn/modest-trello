@@ -17,6 +17,7 @@ export const AppContext = createContext<IAppState>(noopState)
 export const AppState = ({ children }: Props) => {
     const [state, dispatch] = useReducer(stateReducer, noopState)
 
+    console.log('sTATE', state)
     return (
         <AppContext.Provider value={{ ...state, dispatch }}>
             {children}
