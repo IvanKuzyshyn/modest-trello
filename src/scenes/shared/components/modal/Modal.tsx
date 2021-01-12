@@ -11,7 +11,7 @@ interface Props {
 
 const root = document.getElementById('portals-root')
 
-const Modal = ({ title, children, onClose }: Props) => {
+export const Modal = ({ title, children, onClose }: Props) => {
     const element = useMemo(() => document.createElement('div'), [])
     element.classList.add('modal-container')
 
@@ -37,5 +37,3 @@ const Modal = ({ title, children, onClose }: Props) => {
         element
     )
 }
-
-export default Modal
