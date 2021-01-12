@@ -3,3 +3,5 @@ export type Column = {
   label: string
   color: string
 }
+
+export type DraftColumn = Omit<Column, 'id'>
