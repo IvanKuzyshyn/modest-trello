@@ -1,4 +1,4 @@
 export enum Entity {
-  CARD = 'trello card',
-  COLUMN = 'trello column',
+  CARD = 'trello-card',
+  COLUMN = 'trello-column',
 }
