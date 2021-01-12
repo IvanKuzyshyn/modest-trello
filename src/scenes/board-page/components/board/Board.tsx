@@ -7,6 +7,7 @@ import {getAllColumns} from "../../selectors/column";
 import {useAction} from "../../../../context/hooks/use-action";
 import {StateAction} from "../../../../context/types/state";
 import {Column, DraftColumn} from "../../types/column";
+import { Column as ColumnComponent } from "../column/Column";
 
 export const Board = () => {
     const [isModalVisible, setModalVisibility] = useState<boolean>(false)
@@ -48,7 +49,14 @@ export const Board = () => {
             </section>
             <section className="board-columns">
                 {columns.map(column => (
-                    <div key={column.id}>{column.label}</div>
+                    <ColumnComponent
+                        key={column.id}
+                        id={column.id}
+                        name={column.label}
+                        color={column.color}
+                        onDelete={() => setDeletingColumnId(column.id)}
+                        onEdit={() => handleShowEditModal(column.id)}
+                    />
                 ))}
             </section>
         </Page>

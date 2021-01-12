@@ -1,34 +1,34 @@
 .column {
-    color: #ffffff;
-    padding: 6px 8px;
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 3px;
-    height: auto;
-    min-height: 32px;
-    transition: background 85ms ease-in;
-    width: 272px;
-    margin: 0 4px;
-    box-sizing: border-box;
-    display: inline-block;
-    vertical-align: top;
-    white-space: nowrap;
-    border-top: 4px solid transparent;
+  color: #ffffff;
+  padding: 6px 8px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+  height: auto;
+  min-height: 32px;
+  transition: background 85ms ease-in;
+  width: 272px;
+  margin: 0 4px;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
+  border-top: 4px solid transparent;
 }
 
 .column .title {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
 }
 
 .column--default {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .column--default:hover {
-    cursor: pointer;
-    background-color: #ffffff;
-    color: #333333;
+  cursor: pointer;
+  background-color: #ffffff;
+  color: #333333;
 }
