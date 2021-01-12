@@ -1,11 +1,11 @@
 import React from 'react'
 import './Page.css'
 
-interface Proos {
+interface Props {
   children: React.ReactNode
 }
 
-export const Page = ({ children }: Proos) => (
+export const Page = ({ children }: Props) => (
   <>
     <header>
       <h1>Modest Trello</h1>

@@ -4,7 +4,6 @@ import { Entity } from './api.types'
 const getUniqueID = () => new Date().getTime()
 
 const readFromStore = (name: Entity) => {
-  // const key = name.toString()
   const rawData = localStorage.getItem(name)
 
   try {
