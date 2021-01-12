@@ -122,5 +122,8 @@ export const useAction = (action: StateAction) => {
     throw new Error('Action handler no found. Check name spelling')
   }
 
+  // Because of React guarantees that dispatch function identity is stable
+  // look at https://reactjs.org/docs/hooks-reference.html#usereducer
+  // eslint-disable-next-line
   return useMemo(() => handler(dispatch), [handler])
 }
