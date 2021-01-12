@@ -13,9 +13,9 @@ import {
   EditCardAction,
   EditColumnAction,
   ReadAllCardsAction,
-  ReadAllColumnsAction, SetColumnManagerAction,
+  ReadAllColumnsAction, SetCardManagerAction, SetColumnManagerAction,
 } from '../types/action'
-import { Card, DraftCard } from '../../scenes/board-page/types/card'
+import {Card, CardManagerSetup, DraftCard} from '../../scenes/board-page/types/card'
 
 const HANDLERS: Record<StateAction, Function> = {
   [StateAction.READ_ALL_COLUMNS]: (
@@ -31,7 +31,7 @@ const HANDLERS: Record<StateAction, Function> = {
   [StateAction.READ_ALL_CARDS]: (
     dispatch: Dispatch<ReadAllCardsAction>
   ) => () => {
-    const items = readAll<Card>(Entity.COLUMN)
+    const items = readAll<Card>(Entity.CARD)
 
     dispatch({
       type: StateAction.READ_ALL_CARDS,
@@ -51,7 +51,7 @@ const HANDLERS: Record<StateAction, Function> = {
   [StateAction.CREATE_CARD]: (dispatch: Dispatch<CreateCardAction>) => (
     data: DraftCard
   ) => {
-    const item = create<Card>(Entity.COLUMN, data as Card)
+    const item = create<Card>(Entity.CARD, data as Card)
 
     dispatch({
       type: StateAction.CREATE_CARD,
@@ -73,7 +73,7 @@ const HANDLERS: Record<StateAction, Function> = {
     id: number,
     data: DraftCard
   ) => {
-    const item = update<Card>(Entity.COLUMN, id, data as Card)
+    const item = update<Card>(Entity.CARD, id, data as Card)
 
     dispatch({
       type: StateAction.EDIT_CARD,
@@ -103,6 +103,12 @@ const HANDLERS: Record<StateAction, Function> = {
   [StateAction.SET_COLUMN_MANAGER]: (dispatch: Dispatch<SetColumnManagerAction>) => (data: ColumnManagerSetup) => {
     dispatch({
       type: StateAction.SET_COLUMN_MANAGER,
+      payload: data,
+    })
+  },
+  [StateAction.SET_CARD_MANAGER]: (dispatch: Dispatch<SetCardManagerAction>) => (data: CardManagerSetup) => {
+    dispatch({
+      type: StateAction.SET_CARD_MANAGER,
       payload: data,
     })
   }
