@@ -1,6 +1,6 @@
 .board-columns {
-    display: flex;
-    overflow-x: auto;
-    overflow-y: hidden;
-    height: 100%;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 100%;
 }
