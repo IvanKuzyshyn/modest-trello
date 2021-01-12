@@ -4,12 +4,12 @@ import { Entity } from './api.types'
 const getUniqueID = () => new Date().getTime()
 
 const readFromStore = (name: Entity) => {
-  console.log('ANME', name)
-  const key = name.toString()
-  const rawData = localStorage.getItem(key)
+  // const key = name.toString()
+  const rawData = localStorage.getItem(name)
 
   try {
-    const data = JSON.parse(String(rawData))
+    // @ts-ignore
+    const data = JSON.parse(rawData)
 
     if (!Array.isArray(data)) {
       return []
@@ -23,11 +23,12 @@ const readFromStore = (name: Entity) => {
 }
 
 const writeToStore = (name: Entity, data: any) => {
-  const key = name.toString()
-  localStorage.setItem(key, JSON.stringify(data))
+  console.log('NAME', name)
+  localStorage.setItem(name, JSON.stringify(data))
 }
 
 export const create = <T>(name: Entity, data: T): T => {
+  console.log('CREATE NAME', name)
   const existingItems = readFromStore(name)
   const newItem = { ...data, id: getUniqueID() }
 
@@ -36,6 +37,7 @@ export const create = <T>(name: Entity, data: T): T => {
 }
 
 export const update = <T>(name: Entity, id: number, data: T): T => {
+  console.log('UPDATE NAME', name)
   const existingItems = readFromStore(name)
   const targetItemIndex = findIndex(propEq('id', id), existingItems)
 
@@ -59,8 +61,11 @@ export const update = <T>(name: Entity, id: number, data: T): T => {
 
 export const remove = <T>(name: Entity, id: number): T[] => {
   const existingItems = readFromStore(name)
+  console.log('EXISTING ITEMS', existingItems)
   // @ts-ignore
   const updatedItems = existingItems.filter((item: T) => item.id !== id)
+  console.log('UPDATED ITEMS', updatedItems)
+  console.log('WRITE TO', name)
 
   writeToStore(name, updatedItems)
   return updatedItems
