@@ -3,7 +3,7 @@ import {IAppState} from "./types/state";
 import {stateReducer} from './reducer/state'
 
 interface Props {
-    children: React.Component
+    children: React.ReactNode
 }
 
 const noopState: IAppState = {
@@ -14,7 +14,7 @@ const noopState: IAppState = {
 
 export const AppContext = createContext<IAppState>(noopState)
 
-const AppState = ({ children }: Props) => {
+export const AppState = ({ children }: Props) => {
     const [state, dispatch] = useReducer(stateReducer, noopState)
 
     return (
@@ -23,5 +23,3 @@ const AppState = ({ children }: Props) => {
         </AppContext.Provider>
     )
 }
-
-export default AppState
