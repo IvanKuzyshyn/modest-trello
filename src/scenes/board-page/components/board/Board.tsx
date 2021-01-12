@@ -29,7 +29,7 @@ export const Board = () => {
 
   return (
     <Page>
-      <section>
+      <section className="board-header">
         <h2>Your Board</h2>
       </section>
       <section className="board-columns">

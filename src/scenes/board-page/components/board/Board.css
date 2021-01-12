@@ -4,3 +4,7 @@
   overflow-y: hidden;
   height: 100%;
 }
+
+.board-header {
+  margin-bottom: 16px;
+}
