@@ -9,13 +9,12 @@ interface Props {
   onClose: () => void
 }
 
-const root = document.getElementById('portals-root')
-
 export const Modal = ({ title, children, onClose }: Props) => {
   const element = useMemo(() => document.createElement('div'), [])
   element.classList.add('modal-container')
 
   useEffect(() => {
+    const root = document.getElementById('portals-root')
     if (!root) {
       throw new Error('No root found for modal!')
     }
